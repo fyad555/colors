@@ -1,3 +1,15 @@
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Bot is active!');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 const { Client, GatewayIntentBits, ActionRowBuilder, StringSelectMenuBuilder, EmbedBuilder } = require('discord.js');
 
 const client = new Client({
@@ -132,7 +144,7 @@ client.on('interactionCreate', async interaction => {
 
             await member.roles.add(roleId);
 
-            await interaction.editReply({ content: '✨ أبشر، تم ضبط لونك بنجاح!' });
+            await interaction.editReply({ content: '✨  تم ضبط لونك بنجاح' });
         } catch (error) {
             console.error(error);
             await interaction.editReply({ content: '❌ ما قدرت أعطيك الرتبة، تأكد إن رتبة البوت صايرة فوق رتب الألوان بإعدادات السيرفر.' });
